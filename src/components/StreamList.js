@@ -12,12 +12,15 @@ class StreamList extends React.Component {
     renderStreams() {
         return(
             this.props.streams.map(stream => {
+                if (stream.id === undefined) {
+                    return <div></div>
+                }
                 return (
                     <div className="item" key={ stream.id }>
                         { this.renderAdmin(stream) }
                         <i className="large middle aligned icon camera"></i>
                         <div className="content">
-                            { stream.title }
+                            <Link to={ `/streams/${stream.id} `} className="header">{ stream.title }</Link>
                             <div className="description">
                                 { stream.description }
                             </div>
